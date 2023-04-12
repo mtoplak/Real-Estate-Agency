@@ -18,14 +18,14 @@ function Header() {
           <Nav.Link as={Link} to="/add">
             Add
           </Nav.Link>
-          <Nav.Link as={Link} to="/archieved">
-            Archieved
+          <Nav.Link as={Link} to="/archived">
+            Archived
           </Nav.Link>
           <Nav.Link as={Link} to="/filter">
             Filter
           </Nav.Link>
           <Nav.Link as={Link} to="/about">
-            Agency
+            About us
           </Nav.Link>
         </Nav>
       </Container>
