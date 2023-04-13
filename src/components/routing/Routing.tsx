@@ -1,19 +1,24 @@
-import React from "react";
+import React, { SetStateAction } from "react";
 import { Route, Routes } from "react-router-dom";
 import NotFound from "../404/NotFound";
-import Add from "../Add";
+import Add, { AdInterface } from "../Add";
 import All from "../All";
 import Details from "../Details";
 import Agency from "../Agency";
 import Archieved from "../Archieved";
 
-function Routing() {
+interface RoutingProps{
+  ads: AdInterface[];
+  setAds: React.Dispatch<SetStateAction<AdInterface[]>>;
+}
+
+function Routing({ads, setAds}: RoutingProps) {
   return (
     <>
       <Routes>
         <Route path="/" element={<All />} />
         <Route path="/all" element={<All />} />
-        <Route path="/add" element={<Add />} />
+        <Route path="/add" element={<Add ads={ads} setAds={setAds} />} />
         <Route path="/details/:id" element={<Details />} />
         <Route path="/about" element={<Agency />} />
         <Route path="/archived" element={<Archieved />} />
