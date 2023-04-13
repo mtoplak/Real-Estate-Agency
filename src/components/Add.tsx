@@ -59,7 +59,6 @@ function Add({ ads, setAds }: AddProps) {
         [name]: value,
       };
       //console.log(nextState);
-
       return nextState;
     });
   };

@@ -7,17 +7,17 @@ import Details from "../Details";
 import Agency from "../Agency";
 import Archieved from "../Archieved";
 
-interface RoutingProps{
+interface RoutingProps {
   ads: AdInterface[];
   setAds: React.Dispatch<SetStateAction<AdInterface[]>>;
 }
 
-function Routing({ads, setAds}: RoutingProps) {
+function Routing({ ads, setAds }: RoutingProps) {
   return (
     <>
       <Routes>
-        <Route path="/" element={<All />} />
-        <Route path="/all" element={<All />} />
+        <Route path="/" element={<All ads={ads} />} />
+        <Route path="/all" element={<All ads={ads} />} />
         <Route path="/add" element={<Add ads={ads} setAds={setAds} />} />
         <Route path="/details/:id" element={<Details />} />
         <Route path="/about" element={<Agency />} />
