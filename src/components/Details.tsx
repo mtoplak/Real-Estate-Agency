@@ -56,6 +56,15 @@ function Details({ ads, setAds, setFinishedAds }: DetailsProps) {
   };
   console.log(ads);
 
+  const handleDelete = () => {
+    setAds((prevState) => {
+      // remove this ad from all ads
+      const nextState = prevState.filter((ad) => ad.id !== parseInt(id));
+      return nextState;
+    });
+    navigate("/");
+  };
+
   return (
     <Container className="my-4">
       <Row className="justify-content-center">
@@ -125,6 +134,15 @@ function Details({ ads, setAds, setFinishedAds }: DetailsProps) {
                 <Col md={6} className="d-flex justify-content-end">
                   <Button variant="danger" onClick={handleFinish}>
                     Finish
+                  </Button>
+                </Col>
+              </Row>
+            </Card.Footer>
+            <Card.Footer style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+              <Row className="align-items-center justify-content-between">
+                <Col md={6} className="d-flex justify-content-end">
+                  <Button variant="danger" onClick={handleDelete}>
+                    Delete
                   </Button>
                 </Col>
               </Row>

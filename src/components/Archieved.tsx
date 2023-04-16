@@ -1,7 +1,6 @@
 import React from "react";
 import { AdInterface } from "./Add";
 import { Card, Col, ListGroup, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 interface ArchievedProps {
   finishedAds: AdInterface[];
@@ -12,7 +11,7 @@ function Archieved({ finishedAds }: ArchievedProps) {
     <>
       <h1>Archived Ads</h1>
       {finishedAds.length === 0 ? (
-        <p>There are no archived ads.</p>
+        <p>There are no archived ads yet.</p>
       ) : (
         <Row xs={1} sm={2} md={3} lg={4} className="g-4">
           {finishedAds.map((ad) => (
