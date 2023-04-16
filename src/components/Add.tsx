@@ -17,8 +17,8 @@ export interface AdInterface {
   image1?: string;
   image2?: string;
   image3?: string;
-  finished: boolean;
   archived: boolean;
+  finishReason: string;
   id: number;
 }
 
@@ -41,7 +41,7 @@ const initialState: AdInterface = {
   image1: "",
   image2: "",
   image3: "",
-  finished: false,
+  finishReason: "",
   archived: false,
   id: 0,
 };

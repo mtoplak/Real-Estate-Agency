@@ -11,9 +11,13 @@ import Search from "../../Search";
 interface RoutingProps {
   ads: AdInterface[];
   setAds: React.Dispatch<SetStateAction<AdInterface[]>>;
+  finishedAds: AdInterface[];
+  setFinishedAds: React.Dispatch<SetStateAction<AdInterface[]>>;
 }
 
-function Routing({ ads, setAds }: RoutingProps) {
+function Routing({ ads, setAds, finishedAds, setFinishedAds }: RoutingProps) {
+  console.log("končani")
+  console.log(finishedAds);
   return (
     <>
       <Routes>
@@ -22,10 +26,10 @@ function Routing({ ads, setAds }: RoutingProps) {
         <Route path="/add" element={<Add ads={ads} setAds={setAds} />} />
         <Route
           path="/details/:id"
-          element={<Details ads={ads} setAds={setAds} />}
+          element={<Details ads={ads} setAds={setAds} setFinishedAds={setFinishedAds} />}
         />
         <Route path="/about" element={<Agency />} />
-        <Route path="/archived" element={<Archieved />} />
+        <Route path="/archived" element={<Archieved finishedAds={finishedAds} />} />
         <Route path="/search" element={<Search />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

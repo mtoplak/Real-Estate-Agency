@@ -1,5 +1,5 @@
-import React, { SetStateAction } from "react";
-import { useParams } from "react-router-dom";
+import React, { SetStateAction, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { AdInterface } from "./Add";
 import {
   Button,
@@ -7,6 +7,8 @@ import {
   Carousel,
   Col,
   Container,
+  Dropdown,
+  DropdownButton,
   Image,
   Row,
 } from "react-bootstrap";
@@ -14,9 +16,13 @@ import {
 interface DetailsProps {
   ads: AdInterface[];
   setAds: React.Dispatch<SetStateAction<AdInterface[]>>;
+  setFinishedAds: React.Dispatch<SetStateAction<AdInterface[]>>;
 }
 
-function Details({ ads, setAds }: DetailsProps) {
+function Details({ ads, setAds, setFinishedAds }: DetailsProps) {
+  const [finishReason, setFinishReason] = useState("");
+  const navigate = useNavigate();
+
   const { id } = useParams<{ id: string }>();
   // check if id is not undefined
   if (!id) {
@@ -28,11 +34,33 @@ function Details({ ads, setAds }: DetailsProps) {
     return <div>Ad not found.</div>;
   }
 
+  const handleFinish = () => {
+    setFinishedAds((prevState) => {
+      // add this ad to finished ads and set reason for finishing it
+      const nextState = [
+        ...prevState,
+        {
+          ...ad,
+          archived: true,
+          finishReason,
+        },
+      ];
+      return nextState;
+    });
+    setAds((prevState) => {
+      // remove this ad from all ads
+      const nextState = prevState.filter((ad) => ad.id !== parseInt(id));
+      return nextState;
+    });
+    navigate("/");
+  };
+  console.log(ads);
+
   return (
     <Container className="my-4">
       <Row className="justify-content-center">
         <Col md={7}>
-          <Carousel>
+          <Carousel className="shadow">
             <Carousel.Item>
               <Image src={ad.image1} fluid className="rounded" />
             </Carousel.Item>
@@ -45,11 +73,7 @@ function Details({ ads, setAds }: DetailsProps) {
           </Carousel>
         </Col>
         <Col md={5}>
-          <Card
-            border="secondary"
-            bg="light"
-            style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)" }}
-          >
+          <Card border="secondary" bg="light" className="shadow">
             <Card.Body>
               <Card.Title>{ad.type}</Card.Title>
               <h2 className="mb-3">{ad.address}</h2>
@@ -73,14 +97,38 @@ function Details({ ads, setAds }: DetailsProps) {
               <p className="text-muted mb-0">
                 <strong>Possible handover:</strong> {ad.date}
               </p>
-              <Button
-                variant="primary"
-                className="mt-4 btn-block"
-                style={{ boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)" }}
-              >
+              <Button variant="primary" className="mt-4 btn-block">
                 Contact Seller
               </Button>
             </Card.Body>
+            <Card.Footer style={{ paddingTop: "20px", paddingBottom: "20px" }}>
+              <Row className="align-items-center justify-content-between">
+                <Col md={6} className="d-flex justify-content-between">
+                  <DropdownButton
+                    variant="secondary"
+                    id="dropdown-split-variants-secondary"
+                    title={finishReason ? finishReason : "Finish Sale Reason"}
+                  >
+                    <Dropdown.Item onClick={() => setFinishReason("Sold")}>
+                      Sold
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={() => setFinishReason("Seller Resigned")}
+                    >
+                      Seller Resigned
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => setFinishReason("Other")}>
+                      Other
+                    </Dropdown.Item>
+                  </DropdownButton>
+                </Col>
+                <Col md={6} className="d-flex justify-content-end">
+                  <Button variant="danger" onClick={handleFinish}>
+                    Finish
+                  </Button>
+                </Col>
+              </Row>
+            </Card.Footer>
           </Card>
         </Col>
       </Row>
