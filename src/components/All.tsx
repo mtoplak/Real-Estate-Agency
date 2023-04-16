@@ -1,6 +1,7 @@
 import React from "react";
 import { AdInterface } from "./Add";
-import { Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 interface AllProps {
   ads: AdInterface[];
@@ -22,7 +23,10 @@ function All({ ads }: AllProps) {
               <Card.Body>
                 <Card.Title>{ad.address}</Card.Title>
                 <Card.Text>{ad.region}</Card.Text>
-                <Card.Text>{ad.price}</Card.Text>
+                <Card.Text>{ad.price}€</Card.Text>
+                <Button variant="outline-dark">
+                  <Link className="link" to={"/details/" + ad.id}>More</Link>
+                </Button>
               </Card.Body>
             </Card>
           </Col>

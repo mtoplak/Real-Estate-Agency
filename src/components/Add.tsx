@@ -47,7 +47,6 @@ const initialState: AdInterface = {
 };
 
 function Add({ ads, setAds }: AddProps) {
-  console.log(ads);
   const [ad, setAd] = useState<AdInterface>(initialState);
 
   const handleChange = (e: { target: { value: any; name: any } }) => {
@@ -97,13 +96,13 @@ function Add({ ads, setAds }: AddProps) {
             onChange={handleChange}
           >
             <option>Select region</option>
-            <option value="podravska">Podravska</option>
-            <option value="savinjska">Savinjska</option>
-            <option value="primorska">Primorska</option>
-            <option value="gorenjska">Gorenjska</option>
-            <option value="pomurska">Pomurska</option>
-            <option value="osrednjeslovnska">Osrednjeslovenska</option>
-            <option value="koroška">Koroška</option>
+            <option value="Podravska">Podravska</option>
+            <option value="Savinjska">Savinjska</option>
+            <option value="Primorska">Primorska</option>
+            <option value="Gorenjska">Gorenjska</option>
+            <option value="Pomurska">Pomurska</option>
+            <option value="Osrednjeslovnska">Osrednjeslovenska</option>
+            <option value="Koroška">Koroška</option>
           </Form.Select>
         </Form.Group>
 
@@ -164,14 +163,18 @@ function Add({ ads, setAds }: AddProps) {
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Price</Form.Label>
-          <Form.Control
-            type="number"
-            placeholder="Enter Price"
-            name="price"
-            value={ad.price}
-            onChange={handleChange}
-          />
-          <InputGroup.Text id="basic-addon2">€</InputGroup.Text>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Form.Control
+              type="number"
+              placeholder="Enter Price"
+              name="price"
+              value={ad.price}
+              onChange={handleChange}
+            />
+            <InputGroup.Text id="basic-addon2" style={{ marginLeft: "5px" }}>
+              €
+            </InputGroup.Text>
+          </div>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">

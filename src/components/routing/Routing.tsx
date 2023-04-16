@@ -6,6 +6,7 @@ import All from "../All";
 import Details from "../Details";
 import Agency from "../Agency";
 import Archieved from "../Archieved";
+import Search from "../../Search";
 
 interface RoutingProps {
   ads: AdInterface[];
@@ -19,9 +20,13 @@ function Routing({ ads, setAds }: RoutingProps) {
         <Route path="/" element={<All ads={ads} />} />
         <Route path="/all" element={<All ads={ads} />} />
         <Route path="/add" element={<Add ads={ads} setAds={setAds} />} />
-        <Route path="/details/:id" element={<Details />} />
+        <Route
+          path="/details/:id"
+          element={<Details ads={ads} setAds={setAds} />}
+        />
         <Route path="/about" element={<Agency />} />
         <Route path="/archived" element={<Archieved />} />
+        <Route path="/search" element={<Search />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

@@ -21,8 +21,8 @@ function Header() {
           <Nav.Link as={Link} to="/archived">
             Archived
           </Nav.Link>
-          <Nav.Link as={Link} to="/filter">
-            Filter
+          <Nav.Link as={Link} to="/search">
+            Search
           </Nav.Link>
           <Nav.Link as={Link} to="/about">
             About us
