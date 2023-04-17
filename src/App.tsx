@@ -8,7 +8,7 @@ import { AdInterface } from "./components/Add";
 const initialAds: AdInterface[] = [
   {
     address: "123 Main St",
-    region: "Los Angeles",
+    region: "Koroška",
     floor: 4,
     owner: "John Smith",
     seller: "Jane Doe",
@@ -29,7 +29,7 @@ const initialAds: AdInterface[] = [
   },
   {
     address: "456 Oak Ave",
-    region: "New York",
+    region: "Osrednjeslovenska",
     floor: 2,
     owner: "Jane Doe",
     seller: "John Smith",
@@ -50,7 +50,7 @@ const initialAds: AdInterface[] = [
   },
   {
     address: "789 Elm St",
-    region: "San Francisco",
+    region: "Podravska",
     floor: 1,
     owner: "Bob Johnson",
     seller: "Sara Lee",
