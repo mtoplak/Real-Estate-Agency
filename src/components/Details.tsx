@@ -70,17 +70,14 @@ function Details({ ads, setAds, setFinishedAds }: DetailsProps) {
       <Row className="justify-content-center">
         <Col md={7}>
           <Carousel className="shadow">
-            <Carousel.Item>
-              <Image src={ad.image1} fluid className="rounded" />
-            </Carousel.Item>
-            <Carousel.Item>
-              <Image src={ad.image2} fluid className="rounded" />
-            </Carousel.Item>
-            <Carousel.Item>
-              <Image src={ad.image3} fluid className="rounded" />
-            </Carousel.Item>
+            {ad.images.map((image, index) => (
+              <Carousel.Item key={index}>
+                <Image src={image} fluid className="rounded" />
+              </Carousel.Item>
+            ))}
           </Carousel>
         </Col>
+
         <Col md={5}>
           <Card border="secondary" bg="light" className="shadow">
             <Card.Body>
@@ -112,7 +109,7 @@ function Details({ ads, setAds, setFinishedAds }: DetailsProps) {
             </Card.Body>
             <Card.Footer style={{ paddingTop: "20px", paddingBottom: "20px" }}>
               <Row className="align-items-center justify-content-between">
-                <Col md={6} className="d-flex justify-content-between">
+                <Col md={6} className="d-flex justify-content-start">
                   <DropdownButton
                     variant="secondary"
                     id="dropdown-split-variants-secondary"
@@ -140,7 +137,7 @@ function Details({ ads, setAds, setFinishedAds }: DetailsProps) {
             </Card.Footer>
             <Card.Footer style={{ paddingTop: "20px", paddingBottom: "20px" }}>
               <Row className="align-items-center justify-content-between">
-                <Col md={6} className="d-flex justify-content-end">
+                <Col md={6} className="d-flex">
                   <Button variant="danger" onClick={handleDelete}>
                     Delete
                   </Button>

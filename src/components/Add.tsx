@@ -14,9 +14,7 @@ export interface AdInterface {
   price: number;
   type: string;
   date: string;
-  image1?: string;
-  image2?: string;
-  image3?: string;
+  images: string[];
   archived: boolean;
   finishReason: string;
   id: number;
@@ -38,9 +36,7 @@ const initialState: AdInterface = {
   price: 0,
   type: "",
   date: "",
-  image1: "",
-  image2: "",
-  image3: "",
+  images: [],
   finishReason: "",
   archived: false,
   id: 0,
@@ -48,6 +44,8 @@ const initialState: AdInterface = {
 
 function Add({ ads, setAds }: AddProps) {
   const [ad, setAd] = useState<AdInterface>(initialState);
+  const [numImages, setNumImages] = useState(1);
+  const [imageValues, setImageValues] = useState<string[]>([]);
 
   const handleChange = (e: { target: { value: any; name: any } }) => {
     const { value, name } = e.target;
@@ -57,20 +55,48 @@ function Add({ ads, setAds }: AddProps) {
         ...prevState,
         [name]: value,
       };
-      //console.log(nextState);
+
+      return nextState;
+    });
+  };
+
+  const handleImageChange = (e: { target: { value: any; name: any } }) => {
+    const { value, name } = e.target;
+
+    setAd((prevState: AdInterface) => {
+      const index = Number(name.slice(5)); // Extract the index from the input name (e.g., "image0" => 0)
+      const images = [...prevState.images];
+
+      if (images[index]) {
+        // An image already exists at this index, so replace it with the new value
+        images[index] = value;
+      } else {
+        // No image exists at this index, so add the new value to the end of the array
+        images.push(value);
+      }
+
+      const nextState = {
+        ...prevState,
+        images,
+      };
+
+      setImageValues(images); // Update the imageValues state with the new images array
+
       return nextState;
     });
   };
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    console.log("to je za dodat");
+
     if (ads.length !== 0) {
       ad.id = ads[ads.length - 1].id + 1;
     }
-    console.log(ad);
+
     setAds((prevState: AdInterface[]) => [...prevState, ad]);
     setAd(initialState);
+    setNumImages(1);
+    setImageValues([]); // Reset the imageValues state
   };
 
   return (
@@ -204,39 +230,31 @@ function Add({ ads, setAds }: AddProps) {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Image 1</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter image src"
-            name="image1"
-            value={ad.image1}
-            onChange={handleChange}
-          />
+        <Form.Group className="mb-3" controlId="images">
+          <Form.Label>Images</Form.Label>
+          {[...Array(numImages)].map((_, index) => (
+            <Form.Group
+              className="mb-3"
+              key={index}
+              controlId={`formBasicImage${index + 1}`}
+            >
+              <Form.Control
+                key={index}
+                type="text"
+                placeholder={`Enter image ${index + 1} src`}
+                name={`image${index}`}
+                value={imageValues[index] || ""}
+                onChange={handleImageChange}
+              />
+            </Form.Group>
+          ))}
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Image 2</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter image src"
-            name="image2"
-            value={ad.image2}
-            onChange={handleChange}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Image 3</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter image src"
-            name="image3"
-            value={ad.image3}
-            onChange={handleChange}
-          />
-        </Form.Group>
-
+        <Button variant="light" onClick={() => setNumImages(numImages + 1)}>
+          Add Image
+        </Button>
         <br />
-        <Button variant="primary" type="submit" onClick={handleSubmit}>
+        <br />
+        <Button variant="success" type="submit" onClick={handleSubmit}>
           Submit
         </Button>
       </Form>

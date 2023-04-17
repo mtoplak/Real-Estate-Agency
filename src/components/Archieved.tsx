@@ -17,7 +17,7 @@ function Archieved({ finishedAds }: ArchievedProps) {
           {finishedAds.map((ad) => (
             <Col key={ad.id}>
               <Card>
-                <Card.Img variant="top" src={ad.image1} />
+                <Card.Img variant="top" src={ad.images[0]} />
                 <Card.Body>
                   <Card.Title>{ad.address}</Card.Title>
                   <Card.Text>{ad.region}</Card.Text>
