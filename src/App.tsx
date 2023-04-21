@@ -3,7 +3,7 @@ import "./App.css";
 import Routing from "./components/routing/Routing";
 import Header from "./components/Header";
 import { BrowserRouter } from "react-router-dom";
-import { AdInterface } from "./components/Add";
+import { AdInterface } from "./components/forms/Add";
 
 const initialAds: AdInterface[] = [
   {
@@ -15,7 +15,7 @@ const initialAds: AdInterface[] = [
     contact: 1234567890,
     cadastral: "ABC123",
     price: 500000,
-    type: "Sell",
+    type: "sell",
     date: "2022-02-14",
     images: [
       "https://img.staticmb.com/mbcontent//images/uploads/2022/12/Most-Beautiful-House-in-the-World.jpg",
@@ -34,11 +34,11 @@ const initialAds: AdInterface[] = [
     seller: "John Smith",
     contact: 9876543210,
     cadastral: "DEF456",
-    price: 800000,
-    type: "Rent",
+    price: 800,
+    type: "rent",
     date: "2022-03-15",
     images: [
-      "https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/TypesOfHomes/types-of-homes-hero.jpg",
+      "https://www.bolha.com/image-w920x690/nepremicnine/lokacija-stanovanja-crnuce-23.00-m2-slika-15117554.jpg",
       "https://images.familyhomeplans.com/cdn-cgi/image/fit=scale-down,quality=85/plans/41438/41438-b580.jpg",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReePcgaxS_YZw9nCLg4c-03CUtRXO4PpwuSFJf7XwSAQYQnFRG-KDLAaY-jvZ6SVWvma8&usqp=CAU",
     ],
@@ -55,7 +55,7 @@ const initialAds: AdInterface[] = [
     contact: 5551234567,
     cadastral: "GHI789",
     price: 2500000,
-    type: "Sell",
+    type: "sell",
     date: "2022-04-16",
     images: [
       "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bW9kZXJuJTIwaG91c2V8ZW58MHx8MHx8&w=1000&q=80",

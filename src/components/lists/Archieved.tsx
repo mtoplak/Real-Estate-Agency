@@ -1,5 +1,5 @@
 import React from "react";
-import { AdInterface } from "./Add";
+import { AdInterface } from "../forms/Add";
 import { Card, Col, ListGroup, Row } from "react-bootstrap";
 
 interface ArchievedProps {
@@ -9,7 +9,7 @@ interface ArchievedProps {
 function Archieved({ finishedAds }: ArchievedProps) {
   return (
     <>
-      <h1>Archived Ads</h1>
+      <h1 className="heading">Archived Ads</h1>
       {finishedAds.length === 0 ? (
         <p>There are no archived ads yet.</p>
       ) : (
@@ -22,7 +22,10 @@ function Archieved({ finishedAds }: ArchievedProps) {
                   <Card.Title>{ad.address}</Card.Title>
                   <Card.Text>{ad.region}</Card.Text>
                   <ListGroup variant="flush">
-                    <ListGroup.Item>Price: {ad.price}€</ListGroup.Item>
+                    <ListGroup.Item>
+                      Price: {ad.price}€{" "}
+                      {(ad.type === "rent" || ad.type === "najem") && "/ month"}
+                    </ListGroup.Item>
                     <ListGroup.Item>Floor: {ad.floor}</ListGroup.Item>
                     <ListGroup.Item>Type: {ad.type}</ListGroup.Item>
                     <ListGroup.Item>Seller: {ad.seller}</ListGroup.Item>

@@ -1,7 +1,7 @@
 import { Button, Card, Col, Form, InputGroup, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
-import { AdInterface } from "./Add";
+import { AdInterface } from "./forms/Add";
 
 interface SearchProps {
   ads: AdInterface[];
@@ -25,7 +25,7 @@ function Search({ ads }: SearchProps) {
 
   return (
     <div>
-      <h1>Search ads by filters</h1>
+      <h1 className="heading">Search ads by filters</h1>
       <Form onSubmit={handleFilter} style={{ marginBottom: "2rem" }}>
         <Form.Label>Region</Form.Label>
         <Form.Select

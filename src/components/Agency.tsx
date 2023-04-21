@@ -6,15 +6,6 @@ function Agency() {
     <Container>
       <Row>
         <Col md={12}>
-          <Image
-            src="https://properties-away.com/wp-content/uploads/real_esate_agent_koh_samui-800x321.jpg"
-            fluid
-          />
-        </Col>
-      </Row>
-      <br />
-      <Row>
-        <Col md={12}>
           <h1>About Our Real Estate Agency</h1>
         </Col>
       </Row>
@@ -33,6 +24,7 @@ function Agency() {
           <h2>Our Mission</h2>
         </Col>
       </Row>
+
       <Row>
         <Col md={12}>
           <p>
@@ -62,6 +54,15 @@ function Agency() {
           </p>
         </Col>
       </Row>
+      <Row>
+        <Col md={12}>
+          <Image
+            src="https://media.istockphoto.com/id/1409298953/photo/real-estate-agents-shake-hands-after-the-signing-of-the-contract-agreement-is-complete.jpg?b=1&s=170667a&w=0&k=20&c=41IYPuvIWQmDRUXdhWELlGb3IeQulHGQwRCJ_5MtgSo="
+            fluid
+          />
+        </Col>
+      </Row>
+      <br />
     </Container>
   );
 }
