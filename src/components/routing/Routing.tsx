@@ -1,13 +1,14 @@
 import React, { SetStateAction } from "react";
 import { Route, Routes } from "react-router-dom";
 import NotFound from "../404/NotFound";
-import Add, { AdInterface } from "../forms/Add";
+import Add from "../forms/Add";
 import All from "../lists/All";
 import Details from "../Details";
 import Agency from "../Agency";
 import Archieved from "../lists/Archieved";
 import Search from "../Search";
 import Edit from "../forms/Edit";
+import { AdInterface } from "../../models/ad";
 
 interface RoutingProps {
   ads: AdInterface[];
@@ -17,8 +18,6 @@ interface RoutingProps {
 }
 
 function Routing({ ads, setAds, finishedAds, setFinishedAds }: RoutingProps) {
-  console.log("končani");
-  console.log(finishedAds);
   return (
     <>
       <Routes>

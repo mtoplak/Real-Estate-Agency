@@ -1,5 +1,5 @@
 import React from "react";
-import { AdInterface } from "../forms/Add";
+import { AdInterface } from "../../models/ad";
 import { Card, Col, ListGroup, Row } from "react-bootstrap";
 
 interface ArchievedProps {

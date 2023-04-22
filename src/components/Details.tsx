@@ -1,6 +1,6 @@
 import React, { SetStateAction, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { AdInterface } from "./forms/Add";
+import { AdInterface } from "../models/ad";
 import {
   Button,
   Card,
@@ -139,9 +139,7 @@ function Details({ ads, setAds, setFinishedAds }: DetailsProps) {
               <Row className="align-items-center justify-content-between">
                 <Col md={6} className="d-flex">
                   <Link to={`/edit/${ad.id}`}>
-                    <Button variant="secondary">
-                      Edit
-                    </Button>
+                    <Button variant="secondary">Edit</Button>
                   </Link>
                 </Col>
                 <Col md={6} className="d-flex justify-content-end">

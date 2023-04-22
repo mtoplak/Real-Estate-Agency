@@ -1,7 +1,7 @@
 import { Button, Card, Col, Form, InputGroup, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
-import { AdInterface } from "./forms/Add";
+import { AdInterface } from "../models/ad";
 
 interface SearchProps {
   ads: AdInterface[];

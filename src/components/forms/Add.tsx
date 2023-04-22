@@ -2,23 +2,7 @@ import React, { SetStateAction, useState } from "react";
 import { InputGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
-export interface AdInterface {
-  address: string;
-  region: string;
-  floor: number;
-  owner: string;
-  seller: string;
-  contact: number;
-  cadastral: string;
-  price: number;
-  type: string;
-  date: string;
-  images: string[];
-  archived: boolean;
-  finishReason: string;
-  id: number;
-}
+import { AdInterface } from "../../models/ad";
 
 interface AddProps {
   ads: AdInterface[];
@@ -37,7 +21,6 @@ export const initialState: AdInterface = {
   type: "",
   date: "",
   images: [],
-  finishReason: "",
   archived: false,
   id: 0,
 };

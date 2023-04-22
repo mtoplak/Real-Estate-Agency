@@ -1,6 +1,6 @@
 import React, { SetStateAction, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { AdInterface } from "./Add";
+import { AdInterface } from "../../models/ad";
 import { Button, Form, InputGroup } from "react-bootstrap";
 
 interface EditProps {
