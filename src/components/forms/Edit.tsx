@@ -78,20 +78,21 @@ function Edit({ ads, setAds }: EditProps) {
     navigate("/");
   };
 
-  useEffect(() => {
-    console.log("to so vsi oglasi");
-    console.log(ads);
-    console.log("to je id");
-    console.log(id);
-    const adToEdit = ads.find((ad) => ad.id === Number(id));
-    if (adToEdit) {
-      console.log("oglas najden:");
-      console.log(adToEdit);
-      setAd(adToEdit);
-      setNumImages(adToEdit.images.length);
-      setImageValues(adToEdit.images);
+  // preveri če obstaja prejšnji projekt že v stanju
+  if (ad) {
+    // preveri če je id prejšnjega projekta enak id-ju iz url-ja
+    if (parseInt(id!) !== ad.id) {
+      const foundProjekt = ads.find((ad) => ad.id === Number(id));
+      if (foundProjekt) {
+        setAd(foundProjekt);
+      }
     }
-  }, [id, ads]);
+  } else {
+    const foundProjekt = ads.find((ad) => ad.id === Number(id));
+    if (foundProjekt) {
+      setAd(foundProjekt);
+    }
+  }
 
   return (
     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
