@@ -1,4 +1,4 @@
-import React, { SetStateAction, useEffect, useState } from "react";
+import React, { SetStateAction, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AdInterface } from "../../models/ad";
 import { Button, Form, InputGroup } from "react-bootstrap";
@@ -78,20 +78,14 @@ function Edit({ ads, setAds }: EditProps) {
     navigate("/");
   };
 
-  // preveri če obstaja prejšnji projekt že v stanju
-  if (ad) {
-    // preveri če je id prejšnjega projekta enak id-ju iz url-ja
-    if (parseInt(id!) !== ad.id) {
-      const foundProjekt = ads.find((ad) => ad.id === Number(id));
-      if (foundProjekt) {
-        setAd(foundProjekt);
-      }
-    }
-  } else {
-    const foundProjekt = ads.find((ad) => ad.id === Number(id));
-    if (foundProjekt) {
-      setAd(foundProjekt);
-    }
+  const foundAd = ads.find((ad) => ad.id === Number(id));
+  if (ad && ad.id === Number(id)) {
+    // id matches previous project id
+  } else if (foundAd) {
+    // id se je spremenil
+    setAd(foundAd);
+    setNumImages(foundAd.images.length);
+    setImageValues(foundAd.images);
   }
 
   return (

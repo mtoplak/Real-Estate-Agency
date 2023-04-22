@@ -6,7 +6,7 @@ import All from "../lists/All";
 import Details from "../Details";
 import Agency from "../Agency";
 import Archieved from "../lists/Archieved";
-import Search from "../Search";
+import Search from "../lists/Search";
 import Edit from "../forms/Edit";
 import { AdInterface } from "../../models/ad";
 
