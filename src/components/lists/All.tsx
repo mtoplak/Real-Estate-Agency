@@ -2,6 +2,7 @@ import React from "react";
 import { AdInterface } from "../../models/ad";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 interface AllProps {
   ads: AdInterface[];
@@ -10,6 +11,14 @@ interface AllProps {
 function All({ ads }: AllProps) {
   return (
     <>
+      <Helmet>
+        <meta
+          name="description"
+          content="Browse through all the ads on our website."
+        />
+        <title>Real Estate Agency</title>
+      </Helmet>
+
       {ads.length === 0 ? (
         <h1>Currently there aren't any ads</h1>
       ) : (

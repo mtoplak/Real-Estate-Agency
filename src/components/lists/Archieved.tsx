@@ -1,6 +1,7 @@
 import React from "react";
 import { AdInterface } from "../../models/ad";
 import { Card, Col, ListGroup, Row } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 
 interface ArchievedProps {
   finishedAds: AdInterface[];
@@ -9,6 +10,11 @@ interface ArchievedProps {
 function Archieved({ finishedAds }: ArchievedProps) {
   return (
     <>
+      <Helmet>
+        <meta name="description" content="Real Estate Agency - Edit your ad" />
+        <title>Archived ads</title>
+      </Helmet>
+
       <h1 className="heading">Archived Ads</h1>
       {finishedAds.length === 0 ? (
         <p>There are no archived ads yet.</p>

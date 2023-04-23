@@ -2,6 +2,7 @@ import React, { SetStateAction, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AdInterface } from "../../models/ad";
 import { Button, Form, InputGroup } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 
 interface EditProps {
   ads: AdInterface[];
@@ -89,209 +90,219 @@ function Edit({ ads, setAds }: EditProps) {
   }
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-      {ad ? (
-        <Form>
-          <Form.Group
-            className="mb-3"
-            controlId="formBasicEmail"
-            style={{ maxWidth: "800px" }}
-          >
-            <Form.Label>Address</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter Address"
-              name="address"
-              onChange={handleChange}
-              value={ad.address}
-            />
-          </Form.Group>
+    <>
+      <Helmet>
+        <meta name="description" content="Real Estate Agency - Edit your ad" />
+        <title>{"Edit ad " + ad?.id}</title>
+      </Helmet>
 
-          <Form.Group
-            className="mb-3"
-            controlId="formBasicEmail"
-            style={{ maxWidth: "800px" }}
-          >
-            <Form.Label>Region</Form.Label>
-            <Form.Select
-              aria-label="Default select example"
-              name="region"
-              value={ad.region}
-              onChange={handleChange}
+      <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+        {ad ? (
+          <Form>
+            <Form.Group
+              className="mb-3"
+              controlId="formBasicEmail"
+              style={{ maxWidth: "800px" }}
             >
-              <option>Select region</option>
-              <option value="Podravska">Podravska</option>
-              <option value="Savinjska">Savinjska</option>
-              <option value="Primorska">Primorska</option>
-              <option value="Gorenjska">Gorenjska</option>
-              <option value="Pomurska">Pomurska</option>
-              <option value="Osrednjeslovnska">Osrednjeslovenska</option>
-              <option value="Koroška">Koroška</option>
-            </Form.Select>
-          </Form.Group>
+              <Form.Label>Address</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Address"
+                name="address"
+                onChange={handleChange}
+                value={ad.address}
+              />
+            </Form.Group>
 
-          <Form.Group
-            className="mb-3"
-            controlId="formBasicPassword"
-            style={{ maxWidth: "800px" }}
-          >
-            <Form.Label>Floor</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Enter Floor number"
-              name="floor"
-              value={ad.floor}
-              onChange={handleChange}
-            />
-          </Form.Group>
+            <Form.Group
+              className="mb-3"
+              controlId="formBasicEmail"
+              style={{ maxWidth: "800px" }}
+            >
+              <Form.Label>Region</Form.Label>
+              <Form.Select
+                aria-label="Default select example"
+                name="region"
+                value={ad.region}
+                onChange={handleChange}
+              >
+                <option>Select region</option>
+                <option value="Podravska">Podravska</option>
+                <option value="Savinjska">Savinjska</option>
+                <option value="Primorska">Primorska</option>
+                <option value="Gorenjska">Gorenjska</option>
+                <option value="Pomurska">Pomurska</option>
+                <option value="Osrednjeslovnska">Osrednjeslovenska</option>
+                <option value="Koroška">Koroška</option>
+              </Form.Select>
+            </Form.Group>
 
-          <Form.Group
-            className="mb-3"
-            controlId="formBasicEmail"
-            style={{ maxWidth: "800px" }}
-          >
-            <Form.Label>Seller</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter Seller"
-              name="seller"
-              value={ad.seller}
-              onChange={handleChange}
-            />
-          </Form.Group>
-
-          <Form.Group
-            className="mb-3"
-            controlId="formBasicEmail"
-            style={{ maxWidth: "800px" }}
-          >
-            <Form.Label>Owner(s)</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter Owner(s)"
-              name="owner"
-              value={ad.owner}
-              onChange={handleChange}
-            />
-          </Form.Group>
-
-          <Form.Group
-            className="mb-3"
-            controlId="formBasicPassword"
-            style={{ maxWidth: "800px" }}
-          >
-            <Form.Label>Contact number</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Enter Contact Number"
-              name="contact"
-              value={ad.contact}
-              onChange={handleChange}
-            />
-          </Form.Group>
-
-          <Form.Group
-            className="mb-3"
-            controlId="formBasicPassword"
-            style={{ maxWidth: "800px" }}
-          >
-            <Form.Label>Cadastral number</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter Cadastral number"
-              name="cadastral"
-              value={ad.cadastral}
-              onChange={handleChange}
-            />
-          </Form.Group>
-
-          <Form.Group
-            className="mb-3"
-            controlId="formBasicPassword"
-            style={{ maxWidth: "800px" }}
-          >
-            <Form.Label>Price</Form.Label>
-            <div style={{ display: "flex", alignItems: "center" }}>
+            <Form.Group
+              className="mb-3"
+              controlId="formBasicPassword"
+              style={{ maxWidth: "800px" }}
+            >
+              <Form.Label>Floor</Form.Label>
               <Form.Control
                 type="number"
-                placeholder="Enter Price"
-                name="price"
-                value={ad.price}
+                placeholder="Enter Floor number"
+                name="floor"
+                value={ad.floor}
                 onChange={handleChange}
               />
-              <InputGroup.Text id="basic-addon2" style={{ marginLeft: "5px" }}>
-                €
-              </InputGroup.Text>
-            </div>
-          </Form.Group>
+            </Form.Group>
 
-          <Form.Group
-            className="mb-3"
-            controlId="formBasicEmail"
-            style={{ maxWidth: "800px" }}
-          >
-            <Form.Label>Type</Form.Label>
-            <Form.Select
-              aria-label="Default select example"
-              name="type"
-              value={ad.type}
-              onChange={handleChange}
+            <Form.Group
+              className="mb-3"
+              controlId="formBasicEmail"
+              style={{ maxWidth: "800px" }}
             >
-              <option>Select type</option>
-              <option value="sell">Sell</option>
-              <option value="rent">Rent</option>
-              <option value="buy">Buy</option>
-              <option value="primorska">Najem</option>
-            </Form.Select>
-          </Form.Group>
+              <Form.Label>Seller</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Seller"
+                name="seller"
+                value={ad.seller}
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-          <Form.Group controlId="duedate" style={{ maxWidth: "800px" }}>
-            <Form.Label>Date of possible handover</Form.Label>
-            <Form.Control
-              type="date"
-              name="date"
-              placeholder="Date of possible handover"
-              value={ad.date}
-              onChange={handleChange}
-            />
-          </Form.Group>
+            <Form.Group
+              className="mb-3"
+              controlId="formBasicEmail"
+              style={{ maxWidth: "800px" }}
+            >
+              <Form.Label>Owner(s)</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Owner(s)"
+                name="owner"
+                value={ad.owner}
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-          <Form.Group
-            className="mb-3"
-            controlId="images"
-            style={{ maxWidth: "800px" }}
-          >
-            <Form.Label>Images</Form.Label>
-            {[...Array(numImages)].map((_, index) => (
-              <Form.Group
-                className="mb-3"
-                key={index}
-                controlId={`formBasicImage${index + 1}`}
-              >
+            <Form.Group
+              className="mb-3"
+              controlId="formBasicPassword"
+              style={{ maxWidth: "800px" }}
+            >
+              <Form.Label>Contact number</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="Enter Contact Number"
+                name="contact"
+                value={ad.contact}
+                onChange={handleChange}
+              />
+            </Form.Group>
+
+            <Form.Group
+              className="mb-3"
+              controlId="formBasicPassword"
+              style={{ maxWidth: "800px" }}
+            >
+              <Form.Label>Cadastral number</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Cadastral number"
+                name="cadastral"
+                value={ad.cadastral}
+                onChange={handleChange}
+              />
+            </Form.Group>
+
+            <Form.Group
+              className="mb-3"
+              controlId="formBasicPassword"
+              style={{ maxWidth: "800px" }}
+            >
+              <Form.Label>Price</Form.Label>
+              <div style={{ display: "flex", alignItems: "center" }}>
                 <Form.Control
-                  key={index}
-                  type="text"
-                  placeholder={`Enter image ${index + 1} src`}
-                  name={`image${index}`}
-                  value={imageValues[index] || ""}
-                  onChange={handleImageChange}
+                  type="number"
+                  placeholder="Enter Price"
+                  name="price"
+                  value={ad.price}
+                  onChange={handleChange}
                 />
-              </Form.Group>
-            ))}
-          </Form.Group>
-          <Button variant="light" onClick={() => setNumImages(numImages + 1)}>
-            Add Image
-          </Button>
-          <br />
-          <br />
-          <Button variant="success" type="submit" onClick={handleSubmit}>
-            Submit edit
-          </Button>
-        </Form>
-      ) : (
-        <h1>Ad with this ID was not found</h1>
-      )}
-    </div>
+                <InputGroup.Text
+                  id="basic-addon2"
+                  style={{ marginLeft: "5px" }}
+                >
+                  €
+                </InputGroup.Text>
+              </div>
+            </Form.Group>
+
+            <Form.Group
+              className="mb-3"
+              controlId="formBasicEmail"
+              style={{ maxWidth: "800px" }}
+            >
+              <Form.Label>Type</Form.Label>
+              <Form.Select
+                aria-label="Default select example"
+                name="type"
+                value={ad.type}
+                onChange={handleChange}
+              >
+                <option>Select type</option>
+                <option value="sell">Sell</option>
+                <option value="rent">Rent</option>
+                <option value="buy">Buy</option>
+                <option value="primorska">Najem</option>
+              </Form.Select>
+            </Form.Group>
+
+            <Form.Group controlId="duedate" style={{ maxWidth: "800px" }}>
+              <Form.Label>Date of possible handover</Form.Label>
+              <Form.Control
+                type="date"
+                name="date"
+                placeholder="Date of possible handover"
+                value={ad.date}
+                onChange={handleChange}
+              />
+            </Form.Group>
+
+            <Form.Group
+              className="mb-3"
+              controlId="images"
+              style={{ maxWidth: "800px" }}
+            >
+              <Form.Label>Images</Form.Label>
+              {[...Array(numImages)].map((_, index) => (
+                <Form.Group
+                  className="mb-3"
+                  key={index}
+                  controlId={`formBasicImage${index + 1}`}
+                >
+                  <Form.Control
+                    key={index}
+                    type="text"
+                    placeholder={`Enter image ${index + 1} src`}
+                    name={`image${index}`}
+                    value={imageValues[index] || ""}
+                    onChange={handleImageChange}
+                  />
+                </Form.Group>
+              ))}
+            </Form.Group>
+            <Button variant="light" onClick={() => setNumImages(numImages + 1)}>
+              Add Image
+            </Button>
+            <br />
+            <br />
+            <Button variant="success" type="submit" onClick={handleSubmit}>
+              Submit edit
+            </Button>
+          </Form>
+        ) : (
+          <h1>Ad with this ID was not found</h1>
+        )}
+      </div>
+    </>
   );
 }
 

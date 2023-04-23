@@ -3,6 +3,7 @@ import { InputGroup } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { AdInterface } from "../../models/ad";
+import { Helmet } from "react-helmet";
 
 interface AddProps {
   ads: AdInterface[];
@@ -84,6 +85,11 @@ function Add({ ads, setAds }: AddProps) {
 
   return (
     <>
+      <Helmet>
+        <meta name="description" content="Real Estate Agency - Add new ad" />
+        <title>Add new ad</title>
+      </Helmet>
+
       <h1 className="heading">Create new ad</h1>
       <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
         <Form>
